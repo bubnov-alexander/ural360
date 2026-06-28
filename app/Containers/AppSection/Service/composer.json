@@ -1,0 +1,6 @@
+{
+    "name": "ural360/service",
+    "description": "Ural360 services container",
+    "type": "apiato-container",
+    "require": {}
+}

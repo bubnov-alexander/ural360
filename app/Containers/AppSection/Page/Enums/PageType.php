@@ -8,6 +8,7 @@ enum PageType: string
     case CONTENT = 'content';
     case CONTACTS = 'contacts';
     case ROUTES = 'routes';
+    case SERVICES = 'services';
     case LEGAL = 'legal';
 
     /**
@@ -20,6 +21,7 @@ enum PageType: string
             self::CONTENT->value => 'Контентная',
             self::CONTACTS->value => 'Контакты',
             self::ROUTES->value => 'Маршруты',
+            self::SERVICES->value => 'Услуги',
             self::LEGAL->value => 'Юридическая',
         ];
     }
