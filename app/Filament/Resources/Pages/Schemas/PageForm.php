@@ -3,8 +3,10 @@
 namespace App\Filament\Resources\Pages\Schemas;
 
 use App\Containers\AppSection\Page\Enums\PageType;
+use App\Containers\AppSection\Page\Models\Page;
 use App\Filament\Components\SEOTab;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -44,7 +46,21 @@ final class PageForm
                                 Select::make('type')
                                     ->label('Тип')
                                     ->options(PageType::options())
+                                    ->live()
                                     ->required(),
+
+                                SpatieMediaLibraryFileUpload::make('home_gallery')
+                                    ->label('Галерея')
+                                    ->collection(Page::MEDIA_COLLECTION_HOME_GALLERY)
+                                    ->image()
+                                    ->multiple()
+                                    ->reorderable()
+                                    ->maxSize(5120)
+                                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                                    ->helperText('Максимальный размер: 5Мб. Формат: .jpg, .png, .webp')
+                                    ->downloadable()
+                                    ->visible(fn (Get $get): bool => self::isHomePageType($get('type')))
+                                    ->columnSpanFull(),
 
                                 Toggle::make('is_published')
                                     ->label('Статус')
@@ -74,6 +90,15 @@ final class PageForm
         $slug = Str::slug($title ?? '');
 
         return $slug !== '' ? $slug : 'page';
+    }
+
+    private static function isHomePageType(mixed $type): bool
+    {
+        if ($type instanceof PageType) {
+            return $type === PageType::HOME;
+        }
+
+        return $type === PageType::HOME->value;
     }
 
     private static function fillSeoTitle(Get $get, Set $set, ?string $title, ?string $oldTitle): void

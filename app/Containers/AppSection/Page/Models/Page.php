@@ -9,10 +9,16 @@ use App\Containers\AppSection\Seo\Models\Seo;
 use App\Containers\AppSection\Seo\Traits\HasSeoTrait;
 use App\Ship\Parents\Models\Model as ParentModel;
 use Illuminate\Support\Str;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-final class Page extends ParentModel implements SeoInterface
+final class Page extends ParentModel implements HasMedia, SeoInterface
 {
     use HasSeoTrait;
+    use InteractsWithMedia;
+
+    public const string MEDIA_COLLECTION_HOME_GALLERY = 'home_gallery';
 
     protected $fillable = [
         'title',
@@ -36,6 +42,19 @@ final class Page extends ParentModel implements SeoInterface
         static::saved(static function (Page $page): void {
             $page->syncGeneratedSeo();
         });
+    }
+
+    public function registerMediaCollections(?Media $media = null): void
+    {
+        $this->addMediaCollection(self::MEDIA_COLLECTION_HOME_GALLERY);
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('webp')
+            ->format('webp')
+            ->optimize()
+            ->nonQueued();
     }
 
     private function makeUniqueSlug(): string
