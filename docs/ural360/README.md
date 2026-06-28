@@ -9,7 +9,7 @@
 | Часть | Статус | Роль |
 | --- | --- | --- |
 | WordPress-сайт | Legacy | Публичный сайт, страницы, услуги, WooCommerce-каталог, галерея и контент |
-| Telegram-бот `yst-travel` | Рабочий Python-сервис | Прием и сопровождение заявок, работа с услугами, внутренний CRM-сценарий |
+| Telegram-бот [`yst-travel`](https://github.com/bubnov-alexander/yst-travel) | Рабочий Python-сервис | Прием и сопровождение заявок, работа с услугами, внутренний CRM-сценарий |
 | Laravel Apiato backend | Целевая платформа | Новая API-архитектура, админка, управление сущностями и правами доступа |
 | Filament | Установлен в Laravel-проект | Административная панель для управления контентом, услугами, заявками и медиа |
 
@@ -27,6 +27,13 @@
 - [Границы данных и доступ Telegram-бота](data-boundaries.md)
 - [Telegram-бот `yst-travel`](telegram-bot.md)
 - [WordPress legacy](wordpress-legacy.md)
+
+## Связанные репозитории
+
+| Репозиторий | Назначение |
+| --- | --- |
+| <https://github.com/bubnov-alexander/ural360> | Основной Laravel/Apiato backend проекта |
+| <https://github.com/bubnov-alexander/yst-travel> | Оригинальный Python Telegram-бот `yst-travel` |
 
 ## Основной стек
 
@@ -57,4 +64,3 @@
 - Миграциями и структурой БД должен владеть Laravel/Apiato backend.
 - Telegram-бот на первом этапе может иметь доступ к общей БД, но только к разрешенным сущностям.
 - Для бота нужен отдельный DB-пользователь без прав на изменение схемы.
-
