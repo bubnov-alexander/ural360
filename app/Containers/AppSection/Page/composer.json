@@ -1,0 +1,6 @@
+{
+    "name": "ural360/page",
+    "description": "Ural360 content pages container",
+    "type": "apiato-container",
+    "require": {}
+}

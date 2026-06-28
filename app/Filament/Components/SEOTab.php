@@ -19,6 +19,7 @@ final class SEOTab
             ->schema([
                 Fieldset::make('SEO-настройки')
                     ->relationship('seo')
+                    ->columnSpanFull()
                     ->schema([
                         TextInput::make('title')
                             ->label('Заголовок в поиске')
