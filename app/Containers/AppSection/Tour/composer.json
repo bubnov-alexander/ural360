@@ -1,0 +1,6 @@
+{
+    "name": "ural360/tour",
+    "description": "Ural360 tours and routes container",
+    "type": "apiato-container",
+    "require": {}
+}
