@@ -26,6 +26,14 @@ final class ContactSettings extends Settings
 
     public ?string $telegram_group_id = null;
 
+    public ?string $max_url = 'https://max.ru/u/f9LHodD0cOJheshEzUKLkOuxWCrUV5uyv0V_fylraPrMfF8fBjBmsDvTVoo';
+
+    public ?string $whatsapp_url = 'https://wa.me/+79000470404';
+
+    public ?string $telegram_url = 'https://t.me/Ural360';
+
+    public ?string $vk_url = 'https://vk.com/urall360';
+
     public static function group(): string
     {
         return 'contact';

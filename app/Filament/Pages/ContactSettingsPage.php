@@ -51,6 +51,10 @@ class ContactSettingsPage extends Page
             'yandex_map_key' => $settings->yandex_map_key,
             'yandex_map_script' => $settings->yandex_map_script,
             'telegram_group_id' => $settings->telegram_group_id,
+            'max_url' => $settings->max_url,
+            'whatsapp_url' => $settings->whatsapp_url,
+            'telegram_url' => $settings->telegram_url,
+            'vk_url' => $settings->vk_url,
         ]);
     }
 
@@ -138,6 +142,30 @@ class ContactSettingsPage extends Page
                             ]),
                     ])
                     ->columns(1),
+
+                Section::make('Социальные сети')
+                    ->schema([
+                        TextInput::make('max_url')
+                            ->label('MAX')
+                            ->url()
+                            ->maxLength(255),
+
+                        TextInput::make('whatsapp_url')
+                            ->label('WhatsApp')
+                            ->url()
+                            ->maxLength(255),
+
+                        TextInput::make('telegram_url')
+                            ->label('Telegram')
+                            ->url()
+                            ->maxLength(255),
+
+                        TextInput::make('vk_url')
+                            ->label('VK')
+                            ->url()
+                            ->maxLength(255),
+                    ])
+                    ->columns(1),
             ]);
     }
 
@@ -156,6 +184,10 @@ class ContactSettingsPage extends Page
             'yandex_map_key' => $data['yandex_map_key'] ?: null,
             'yandex_map_script' => $data['yandex_map_script'] ?: null,
             'telegram_group_id' => $data['telegram_group_id'] ?: null,
+            'max_url' => $data['max_url'] ?: null,
+            'whatsapp_url' => $data['whatsapp_url'] ?: null,
+            'telegram_url' => $data['telegram_url'] ?: null,
+            'vk_url' => $data['vk_url'] ?: null,
         ]);
 
         Notification::make()

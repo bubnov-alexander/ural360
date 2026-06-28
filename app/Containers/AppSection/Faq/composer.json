@@ -1,0 +1,6 @@
+{
+    "name": "ural360/faq",
+    "description": "Ural360 FAQ container",
+    "type": "apiato-container",
+    "require": {}
+}
