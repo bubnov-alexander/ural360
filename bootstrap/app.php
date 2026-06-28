@@ -3,8 +3,6 @@
 use Apiato\Foundation\Apiato;
 use Apiato\Http\Middleware\ProcessETag;
 use Apiato\Http\Middleware\ValidateJsonContent;
-use App\Containers\AppSection\Authentication\UI\WEB\Controllers\HomePageController;
-use App\Containers\AppSection\Authentication\UI\WEB\Controllers\LoginController;
 use App\Providers\Filament\AdminPanelProvider;
 use App\Providers\TelescopeServiceProvider;
 use App\Ship\Middleware\ValidateAppId;
@@ -39,10 +37,10 @@ return Application::configure(basePath: $basePath)
             ProcessETag::class,
         ]);
         $middleware->redirectUsersTo(static function (Request $request): string {
-            return action(HomePageController::class);
+            return '/admin';
         });
         $middleware->redirectGuestsTo(static function (Request $request): string {
-            return action([LoginController::class, 'showForm']);
+            return '/admin/login';
         });
     })
     ->withCommands($apiato->commands())

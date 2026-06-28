@@ -1,6 +1,6 @@
 {
-    "name": "apiato/user",
-    "description": "User Container",
+    "name": "ural360/user",
+    "description": "Minimal Filament admin user container",
     "type": "apiato-container",
     "require": {}
 }

@@ -1,6 +1,0 @@
-{
-    "name": "apiato/authorization",
-    "description": "Authorization Container",
-    "type": "apiato-container",
-    "require": {}
-}
