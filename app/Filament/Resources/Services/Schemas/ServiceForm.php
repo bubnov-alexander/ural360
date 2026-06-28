@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Services\Schemas;
 
 use App\Containers\AppSection\Service\Models\Service;
 use App\Filament\Components\SEOTab;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -63,6 +64,25 @@ final class ServiceForm
                                         self::fillSeoDescription($get, $set, $state, $old);
                                     })
                                     ->rows(12)
+                                    ->columnSpanFull(),
+
+                                Repeater::make('prices')
+                                    ->label('Стоимость')
+                                    ->relationship('prices')
+                                    ->schema([
+                                        TextInput::make('label')
+                                            ->label('От чего зависит')
+                                            ->required()
+                                            ->maxLength(255),
+
+                                        TextInput::make('price')
+                                            ->label('Цена')
+                                            ->required()
+                                            ->maxLength(255),
+                                    ])
+                                    ->addActionLabel('Добавить стоимость')
+                                    ->reorderable(false)
+                                    ->columns(2)
                                     ->columnSpanFull(),
                             ])
                             ->columns(2),

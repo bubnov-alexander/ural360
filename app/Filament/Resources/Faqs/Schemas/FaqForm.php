@@ -38,7 +38,8 @@ final class FaqForm
                             ->default(true)
                             ->required(),
                     ])
-                    ->columns(1),
+                    ->columns(1)
+                    ->columnSpanFull(),
 
                 Section::make('Вопросы')
                     ->schema([
@@ -67,7 +68,8 @@ final class FaqForm
                             ->reorderable(false)
                             ->columns(1)
                             ->columnSpanFull(),
-                    ]),
+                    ])
+                    ->columnSpanFull(),
             ]);
     }
 

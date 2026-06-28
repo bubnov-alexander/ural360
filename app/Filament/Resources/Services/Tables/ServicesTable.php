@@ -29,6 +29,11 @@ final class ServicesTable
                     ->searchable()
                     ->sortable(),
 
+                TextColumn::make('prices_count')
+                    ->label('Цен')
+                    ->counts('prices')
+                    ->toggleable(),
+
                 IconColumn::make('is_published')
                     ->label('Опубликована')
                     ->boolean()

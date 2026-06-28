@@ -7,6 +7,7 @@ use App\Containers\AppSection\Seo\Enums\SeoFieldType;
 use App\Containers\AppSection\Seo\Models\Seo;
 use App\Containers\AppSection\Seo\Traits\HasSeoTrait;
 use App\Ship\Parents\Models\Model as ParentModel;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -53,6 +54,14 @@ final class Service extends ParentModel implements HasMedia, SeoInterface
             ->format('webp')
             ->optimize()
             ->nonQueued();
+    }
+
+    /**
+     * @return HasMany<ServicePrice>
+     */
+    public function prices(): HasMany
+    {
+        return $this->hasMany(ServicePrice::class);
     }
 
     private function makeUniqueSlug(): string
