@@ -1,3 +1,11 @@
+## Ural360
+
+Этот репозиторий используется как основной Laravel/Apiato backend проекта Ural360.
+
+Документация по текущей инфраструктуре проекта, WordPress legacy, Telegram-боту, основным пакетам и плану миграции находится здесь: [docs/ural360](docs/ural360/README.md).
+
+---
+
 <p align="center">
    <a href="https://github.com/apiato/apiato/actions/workflows/tests.yaml">
       <img src="https://img.shields.io/github/actions/workflow/status/apiato/apiato/tests.yaml?label=tests" alt="tests status">
