@@ -1,0 +1,6 @@
+{
+    "name": "ural360/settings",
+    "description": "Ural360 editable site settings container",
+    "type": "apiato-container",
+    "require": {}
+}
