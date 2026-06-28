@@ -22,6 +22,16 @@ class UserForm
                     ->unique(ignoreRecord: true)
                     ->maxLength(255),
 
+                TextInput::make('telegram_id')
+                    ->label('Telegram ID')
+                    ->integer()
+                    ->minValue(1)
+                    ->unique(ignoreRecord: true)
+                    ->validationMessages([
+                        'integer' => 'Telegram ID должен быть числом.',
+                        'min' => 'Telegram ID должен быть положительным.',
+                    ]),
+
                 TextInput::make('password')
                     ->label('Пароль')
                     ->password()

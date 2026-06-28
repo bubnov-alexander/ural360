@@ -50,6 +50,7 @@ class ContactSettingsPage extends Page
             'address' => $settings->address,
             'yandex_map_key' => $settings->yandex_map_key,
             'yandex_map_script' => $settings->yandex_map_script,
+            'telegram_group_id' => $settings->telegram_group_id,
         ]);
     }
 
@@ -124,6 +125,19 @@ class ContactSettingsPage extends Page
                             ->maxLength(5000),
                     ])
                     ->columns(1),
+
+                Section::make('Telegram')
+                    ->schema([
+                        TextInput::make('telegram_group_id')
+                            ->label('ID беседы')
+                            ->helperText('Можно указать отрицательный ID группы или супергруппы.')
+                            ->regex('/^-?\d+$/')
+                            ->maxLength(32)
+                            ->validationMessages([
+                                'regex' => 'ID беседы должен быть числом.',
+                            ]),
+                    ])
+                    ->columns(1),
             ]);
     }
 
@@ -141,6 +155,7 @@ class ContactSettingsPage extends Page
             'address' => $data['address'],
             'yandex_map_key' => $data['yandex_map_key'] ?: null,
             'yandex_map_script' => $data['yandex_map_script'] ?: null,
+            'telegram_group_id' => $data['telegram_group_id'] ?: null,
         ]);
 
         Notification::make()

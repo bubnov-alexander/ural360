@@ -11,6 +11,7 @@ final class User extends ParentUserModel implements FilamentUser
     protected $fillable = [
         'name',
         'email',
+        'telegram_id',
         'password',
     ];
 
@@ -21,6 +22,7 @@ final class User extends ParentUserModel implements FilamentUser
 
     protected $casts = [
         'password' => 'hashed',
+        'telegram_id' => 'integer',
     ];
 
     public function canAccessPanel(Panel $panel): bool

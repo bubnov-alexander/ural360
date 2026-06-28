@@ -28,6 +28,12 @@ class UsersTable
                     ->searchable()
                     ->sortable(),
 
+                TextColumn::make('telegram_id')
+                    ->label('Telegram ID')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
+
                 TextColumn::make('created_at')
                     ->label('Создан')
                     ->dateTime('d.m.Y H:i')

@@ -24,6 +24,8 @@ final class ContactSettings extends Settings
 
     public ?string $yandex_map_script = '<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A407191a03179b3a0f4ea114510c1de9b5809b5bf739aac3533c8369e1c0b702b&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>';
 
+    public ?string $telegram_group_id = null;
+
     public static function group(): string
     {
         return 'contact';

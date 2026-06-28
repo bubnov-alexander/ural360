@@ -1,0 +1,6 @@
+{
+    "name": "ural360/seo",
+    "description": "SEO metadata container",
+    "type": "apiato-container",
+    "require": {}
+}
