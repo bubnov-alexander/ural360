@@ -1,189 +1,138 @@
-## Ural360
+# Ural360
 
-Этот репозиторий используется как основной Laravel/Apiato backend проекта Ural360.
+Backend проекта Ural360 на Laravel 12, Apiato 13 и Filament.
 
-Документация по текущей инфраструктуре проекта, WordPress legacy, Telegram-боту, основным пакетам и плану миграции находится здесь: [docs/ural360](docs/ural360/README.md).
+Проект создается как новая платформа для переноса текущей инфраструктуры Ural360: legacy WordPress-сайта, Telegram-бота `yst-travel`, услуг, маршрутов, заявок, медиа и административных процессов.
 
----
+## Что это за проект
 
-<p align="center">
-   <a href="https://github.com/apiato/apiato/actions/workflows/tests.yaml">
-      <img src="https://img.shields.io/github/actions/workflow/status/apiato/apiato/tests.yaml?label=tests" alt="tests status">
-   </a>
-   <a href="https://codecov.io/gh/apiato/apiato">
-      <img src="https://img.shields.io/codecov/c/github/apiato/apiato?token=siiyEg5AC9" alt="code coverage"/>
-   </a>
-   <a href="https://packagist.org/packages/apiato/apiato">
-      <img src="https://img.shields.io/packagist/v/apiato/apiato" alt="latest stable version">
-   </a>
-   <br>
-   <a href="https://packagist.org/packages/apiato/apiato">
-      <img src="https://img.shields.io/packagist/dt/apiato/apiato" alt="total downloads">
-   </a>
-   <a href="https://github.com/apiato/apiato">
-      <img src="https://img.shields.io/github/license/apiato/apiato" alt="license">
-   </a>
-   <a href="https://discord.gg/ryPcV4KM5k">
-      <img src="https://img.shields.io/discord/800815227839053834?logo=discord&label=chat" alt="chat">
-   </a>
-</p>
+Ural360 связан с туристическими услугами по Уралу:
 
-<p align="center">
-   <img src="https://github.com/apiato/documentation/blob/master/images/apiato.jpg" alt="Apiato Logo"/>
-</p>
-<h1 align="center">Apiato</h1>
-<h3 align="center">Build scalable APIs faster | Powered by PHP and Laravel</h3>
+- сплавы и маршруты по Чусовой;
+- прокат катамаранов;
+- прокат SUP-досок;
+- трансфер;
+- автостоянка;
+- прием и сопровождение заявок через сайт и Telegram-бота.
 
----
+Текущая цель backend-проекта - постепенно заменить WordPress-часть на управляемую Laravel/Apiato-архитектуру, не ломая уже работающий Python Telegram-бот.
 
-## Overview
+## Документация
 
-**Apiato** is a PHP framework built on top of Laravel, specifically designed for creating scalable, testable, API-centric applications. Utilizing the [Porto SAP](https://mahmoudz.github.io/Porto/) architectural pattern, Apiato offers a robust foundation for building complex APIs with flexibility and speed.
+Подробная документация по инфраструктуре проекта находится в [docs/ural360](docs/ural360/README.md).
 
-### Key Features
+Основные разделы:
 
-- **Code Generators** for faster development and streamlined API creation
-- **Documentation Generators** to easily build comprehensive API documentation
-- **API Versioning** to maintain backward compatibility across versions
-- **OAuth2.0 Authentication** for secure, standardized user authentication
-- **Role-Based Access Control** to manage user permissions effectively
-- **Pagination Support** for efficient data retrieval and navigation
-- **Data Caching** to optimize performance and reduce server load
-- **ETag Support** for optimized caching and reduced bandwidth usage
-- **Performance Profiler** to identify and improve application bottlenecks
-- **Localization** for multilingual support in global applications
-- **Social Authentication** with integrations for popular platforms
-- **Test Helpers** for building reliable, maintainable tests
-- **Multiple Response Formats** to adapt to client needs easily
-- **Query Parameters Support** for flexible data querying and filtering
-- **Hash ID Support** to secure sensitive IDs in API responses
-- **Comprehensive Documentation** for seamless onboarding and usage
+- [архитектура](docs/ural360/architecture.md);
+- [основные пакеты](docs/ural360/packages.md);
+- [план миграции](docs/ural360/migration-plan.md);
+- [границы данных и доступ Telegram-бота](docs/ural360/data-boundaries.md);
+- [Telegram-бот `yst-travel`](docs/ural360/telegram-bot.md);
+- [WordPress legacy](docs/ural360/wordpress-legacy.md).
 
-For a comprehensive list of features, visit the [Apiato Documentation](https://apiato.io).
+## Текущий стек
 
----
+| Технология | Назначение |
+| --- | --- |
+| Laravel 12 | Основа backend-приложения |
+| Apiato 13 | Архитектура через Containers, Actions, Tasks, Requests и Transformers |
+| Filament | Административная панель |
+| Spatie Media Library | Хранение и привязка изображений и файлов |
+| Filament Spatie Media Library Plugin | Интеграция медиа-полей в Filament |
+| Laravel Passport | API-аутентификация |
+| Spatie Permission | Роли и права доступа |
+| Telescope | Локальная диагностика приложения |
 
-## Getting Started
+## Что уже настроено
 
-To get started with Apiato, please refer to the [Getting Started Guide](https://apiato.io/docs/getting-started/introduction) in the documentation.
+- установлен Filament;
+- добавлен `AdminPanelProvider`;
+- доступ в Filament ограничен super admin пользователем;
+- добавлены переменные для первого администратора в `.env.example`;
+- seeder администратора берет данные из конфигурации;
+- установлен Spatie Media Library и Filament-плагин для него;
+- опубликованы `config/media-library.php` и миграция таблицы `media`;
+- миграции намеренно не запускались.
 
----
+## Локальный запуск
 
-## Community & Support
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+```
 
-Join our [Discord Community](https://discord.gg/ryPcV4KM5k) for free support, discussions, and connecting with other developers using Apiato.
+Дальше нужно настроить подключение к базе в `.env`.
 
-If you find a bug or have a feature request, feel free to [open an issue](https://github.com/apiato/apiato/issues).
+Миграции запускать только осознанно, когда база подготовлена:
 
----
+```bash
+php artisan migrate
+```
 
-## Contributing
+Создание стартового администратора:
 
-Thank you for considering contributing to Apiato! Contributions are welcome, whether it's documentation, bug reports, or feature suggestions. Check out our [Contribution Guide](https://apiato.io/docs/contribution-guide) for guidelines on how to get started.
+```bash
+php artisan db:seed
+```
 
-Please adhere to the [Code of Conduct](https://apiato.io/docs/contribution-guide#code-of-conduct) to maintain a welcoming environment for all contributors.
+Локальный сервер:
 
----
+```bash
+php artisan serve
+```
 
-## Security
+Админка Filament:
 
-If you discover a security vulnerability, please report it to [Mohammad Alavi](mailto:mohammad.alavi1990@gmail.com). Your report will be addressed promptly.
+```text
+/admin
+```
 
----
+## Переменные администратора
 
-## Project Maintainers
+В `.env.example` есть настройки стартового пользователя админки:
 
-<table>
-  <tbody>
-     <tr>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/mahmoudz.png?s=150">
-            <br>
-            <strong>Mahmoud Zalt</strong>
-            <br>
-            <a href="https://github.com/Mahmoudz">@mahmoudz</a>
-        </td>
-         <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/mohammad-alavi.png?s=150">
-            <br>
-            <strong>Mohammad Alavi</strong>
-            <br>
-            <a href="https://github.com/mohammad-alavi">@Mohammad-Alavi</a>
-        </td>
-          <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/mderis.png?s=150">
-            <br>
-            <strong>Moslem Deris</strong>
-            <br>
-            <a href="https://github.com/mderis">@mderis</a>
-          </td>
-     </tr>
-  </tbody>
-</table>
+```env
+ADMIN_NAME="Super Admin"
+ADMIN_EMAIL=admin@admin.com
+ADMIN_PASSWORD=admin
+```
 
+В реальном окружении пароль надо заменить до запуска seeders.
 
-## Contributors
+## Архитектурный подход
 
-[![Apiato Contributors](https://opencollective.com/apiato/contributors.svg?width=890&button=false&isActive=true)](https://github.com/apiato/apiato/graphs/contributors)
+Backend должен стать владельцем бизнес-логики и схемы базы данных. Telegram-бот остается отдельным Python-сервисом, но на первом этапе может работать с общей БД через отдельного пользователя с ограниченными правами.
 
+Целевое состояние:
 
-## Sponsors
+- Apiato владеет миграциями, моделями, правилами и API;
+- Filament управляет услугами, маршрутами, заявками и медиа;
+- Telegram-бот сначала получает ограниченный DB-доступ;
+- после стабилизации бот переходит на Apiato API;
+- WordPress постепенно выводится из эксплуатации.
 
-<!-- Listing Contributors Refference: https://docs.opencollective.com/help/collectives/collective-settings/data-export#contributor-image -->
+## Правила безопасности
 
-### Diamond Sponsors
+- Не коммитить `.env`.
+- Не коммитить токены Telegram, SSH-ключи, дампы баз и приватные конфиги.
+- Не коммитить `vendor`, `node_modules`, локальные SQLite-базы, cache и логи.
+- Не давать Telegram-боту полный доступ к базе.
+- Миграции и изменение схемы выполнять только со стороны Laravel/Apiato.
 
-<p align="left">
-  <a href="https://smart.sista.ai/?utm_source=docs_apiato&utm_medium=sponsor&utm_campaign=landing_page_content" target="_blank">
-    <img src="https://raw.githubusercontent.com/laradock/laradock/master/.github/home-page-images/custom-sponsors/sista-ai-icon.png" height="165px" alt="Sista AI - Plug-and-Play AI Assistant. (www.sista.ai)" style="margin-right: 4em;">
-  </a>
-  <a href="http://laradock.io/" target="_blank">
-    <img src="https://raw.githubusercontent.com/laradock/laradock/master/DOCUMENTATION/static/img/laradock/laradock-icon.png" height="165px" alt="Laradock: Full PHP development environment on Docker.">
-  </a>
-</p>
+## GitHub
 
+Основной репозиторий проекта:
 
+```text
+https://github.com/bubnov-alexander/ural360
+```
 
-### Gold Sponsors
+Обычный рабочий цикл:
 
-![Gold Sponsors](https://opencollective.com/apiato/tiers/gold-sponsors.svg?avatarHeight=120&width=800&format=svg&button=false)
+```bash
+git add .
+git commit -m "..."
+git push
+```
 
-### Silver Sponsors
-
-![Silver Sponsors](https://opencollective.com/apiato/tiers/silver-sponsors.svg?avatarHeight=90&width=800&format=svg&button=false)
-
-### Bronze Sponsors
-
-![Bronze Sponsors](https://opencollective.com/apiato/tiers/bronze-sponsors.svg?avatarHeight=65&width=800&format=svg&button=false)
-
-
-
-## Backers
-
-[![Open Collective backers](https://opencollective.com/apiato/tiers/awesome-backers.svg?width=800&avatarHeight=65&button=false&isActive=true)](https://opencollective.com/apiato#contributors)
-[![Open Collective backers](https://opencollective.com/apiato/tiers/donate.svg?width=800&avatarHeight=65&button=false&isActive=true)](https://opencollective.com/apiato#contributors)
-
-
-### Supports Us
-
-You can support us using any of the methods below:
-
-<b>1:</b> [Open Collective](https://opencollective.com/apiato) (For Sponsorships checkout Open Collective, or emails us at support@apiato.io)
-
-<b>2:</b> [Github Sponsors](https://github.com/sponsors/Mahmoudz)
-
-
-## License
-
-Apiato is open-sourced software licensed under the [MIT license](https://github.com/apiato/apiato/blob/master/LICENSE).
-
----
-
-<p align="center">
-   <strong>Made with ❤️ by the Apiato community</strong>
-</p>
-
-## Acknowledgements
-Thanks to [JetBrains](https://www.jetbrains.com) for sponsoring this project with their amazing tools and IDEs.
-
-<img style="width: 300px" src="https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.png" alt="JetBrains logo.">
