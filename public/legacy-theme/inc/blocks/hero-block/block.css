@@ -1,0 +1,268 @@
+#hero-block {
+  position: relative;
+  min-height: 550px;
+  display: flex;
+}
+
+#hero-block .container {
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+
+#hero-block .hero-image-bg {
+  position: absolute;
+  top: -210px;
+  left: 0;
+  width: 100%;
+  height: 138%;
+
+}
+
+#hero-block .hero-image-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0000004d; 
+}
+
+
+#hero-block .hero-image-bg img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+#hero-block .hero {
+  position: relative;
+  /* height: calc(100% - 57px); */
+  display: flex;
+  /* flex-wrap: wrap; */
+  /* align-items: center; */
+  justify-content: space-between;
+  width: 100%;
+  height: fit-content;
+  margin-top: -50px;
+}
+
+#hero-block .hero__content {
+  width: 70%;
+  height: fit-content;
+}
+
+#hero-block .hero__image {
+
+  width: 58.3333333333%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-image: url(images/hero-bg.png); */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: none;
+}
+
+#hero-block .hero__image img {
+  object-fit: scale-down;
+  width: 510px;
+  height: 400px;
+}
+
+#hero-block .hero__title {
+  margin: 0;
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 70px;
+  line-height: 128%;
+  color: #FFFFFF;
+}
+
+#hero-block .hero__desc {
+  font-size: 20px;
+  color: #FFFFFF;
+}
+
+#hero-block .hero__list {
+  margin-bottom: 20px;
+}
+
+#hero-block .hero__list li {
+  color: #FFFFFF;
+  list-style: disc inside;
+}
+
+
+.paramms {
+  height: fit-content;
+  display: none;
+  flex-wrap: wrap;
+  gap: 7px;
+  justify-content: end;
+  max-width: 300px;
+  margin-top: 40px;
+
+}
+
+.paramms.params_mobile {
+  display: flex;
+}
+
+
+   
+#hero-block .paramms {
+  max-width: none;
+  justify-content: start;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+#hero-block .hero__content {
+  width: 100%;
+}
+
+@media (max-width: 960px) {
+  #hero-block .hero__title {
+    font-size: 40px;
+  }
+
+  #hero-block .hero__desc {
+    font-size: 18px;
+  }
+
+  #hero-block .hero__image {
+    background-size: contain;
+  }
+
+  #hero-block .hero__image img {
+    width: 76%;
+    height: auto;
+  }
+  /* #hero-block .paramms {
+    display: none;
+  }
+  #hero-block .paramms.params_mobile {
+    display: flex;
+  } */
+  #hero-block .paramms .paramm {
+    font-size: 14px;
+  }
+  #hero-block .paramms .paramm {
+    padding: 7px 15px;
+  }
+  
+  #hero-block .paramms .first_paramm {
+    padding: 7px 15px;
+  }
+  #hero-block .paramms {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+}
+
+@media (max-width: 775px) {
+  #hero-block {
+    /* display: block; */
+    min-height: 500px;
+  }
+  #hero-block .hero {
+    align-items: center;
+    justify-content: center;
+  }
+
+  #hero-block .hero {
+    flex-direction: column-reverse;
+  }
+
+  #hero-block .hero__content {
+    /* margin-bottom: 40px; */
+    width: 100%;
+  }
+
+  #hero-block .hero__content .btn {
+    margin-top: 20px;
+  }
+
+  #hero-block .hero__image {
+    margin-top: 10px;
+    margin-bottom: -40px;
+    width: 100%;
+    padding: 50px;
+  }
+  #hero-block .paramms {
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+  #hero-block .paramms .paramm {
+    text-align: left;
+  }
+}
+
+@media (max-width: 500px) {
+  #hero-block .hero {
+    justify-content: end;
+  }
+  #hero-block .hero__content .btn {
+    /* margin-top: 120px; */
+  }
+  .front-page #hero-block .hero__content {
+    padding: 0;
+  }
+  #hero-block .paramms .paramm {
+    font-size: 13px;
+}  
+#hero-block .paramms .paramm {
+  padding: 5px 12px;
+}
+
+#hero-block .paramms .first_paramm {
+  padding: 5px 12px;
+}
+}
+
+@media (max-width: 425px) {
+  #hero-block .hero__title{
+    font-size: 30px;
+  }
+  #hero-block .hero__desc{
+    font-size: 16px;
+  }
+  #hero-block .container {
+    align-items: start;
+  }
+  .front-page #hero-block .hero__content {
+    margin-top: 30px;
+  }
+  
+
+  #hero-block .hero__content .btn {
+    margin-top: 100px;
+  }
+  
+#hero-block .hero {
+  margin-top: 0;
+}
+}
+
+@media (max-width: 405px) {
+  .front-page #hero-block .hero__content {
+    margin-top: 10px;
+  }
+  #hero-block .hero-image-bg {
+    top: -100px;
+  }
+
+  #hero-block .hero__content .btn {
+    margin-top: 30px;
+  }
+  #hero-block {
+    min-height: 370px;
+}
+}
+
+/*# sourceMappingURL=block.css.map */

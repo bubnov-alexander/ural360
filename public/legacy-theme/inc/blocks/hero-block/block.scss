@@ -1,0 +1,110 @@
+#hero-block {
+    position: relative;
+    min-height: 550px;
+    display: flex;
+
+    .container {
+        height: auto;
+    }
+    .hero-image-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(55, 106, 197, .85);
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+    }
+    .hero {
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+        &__content {
+            width: calc((100% / 12)*5);
+        }
+        &__image {
+            width: calc((100% / 12)*7);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url(images/hero-bg.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+
+            img {
+                object-fit: scale-down;
+                width: 510px;
+                height: 400px;
+            }
+        }
+
+        &__title {
+            margin: 0;
+            margin-bottom: 15px;
+            font-weight: 700;
+            font-size: 36px;
+            line-height: 128%;
+            color: #FFFFFF;
+        }
+        &__desc {
+            font-size: 20px;
+            color: #FFFFFF;
+        }
+    }
+}
+
+#hero-block {
+    @media (max-width: 960px) {
+        .hero {
+            &__title {
+                font-size: 28px;
+            }
+            &__desc {
+                font-size: 18px;
+            }
+            &__image {
+                background-size: contain;
+
+                img {
+                    width: 76%;
+                    height: auto;
+                }
+            }
+        }
+    }
+    @media (max-width: 775px) {
+        display: block;
+        .hero {
+            flex-direction: column-reverse;
+            &__content {
+                margin-bottom: 40px;
+                width: 100%;
+            }
+            &__image {
+                margin-top: 10px;
+                margin-bottom: -40px;
+                width: 100%;
+                padding: 50px;
+            }
+        }
+    }
+}

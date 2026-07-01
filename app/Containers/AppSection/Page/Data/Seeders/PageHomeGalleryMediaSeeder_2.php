@@ -9,8 +9,6 @@ use Throwable;
 
 final class PageHomeGalleryMediaSeeder_2 extends ParentSeeder
 {
-    private const BASE_URL = 'https://ural360.ru';
-
     public function run(): void
     {
         $page = Page::query()
@@ -31,9 +29,10 @@ final class PageHomeGalleryMediaSeeder_2 extends ParentSeeder
 
             try {
                 $page
-                    ->addMediaFromUrl(self::BASE_URL . $path)
+                    ->addMedia(public_path($path))
+                    ->preservingOriginal()
                     ->withCustomProperties([
-                        'source' => 'old_wordpress',
+                        'source' => 'local_imported_wordpress',
                         'source_path' => $path,
                     ])
                     ->toMediaCollection(Page::MEDIA_COLLECTION_HOME_GALLERY);
@@ -49,16 +48,16 @@ final class PageHomeGalleryMediaSeeder_2 extends ParentSeeder
     private function images(): array
     {
         return [
-            '/wp-content/uploads/2025/04/2.2.jpg',
-            '/wp-content/uploads/2025/04/2.22.jpg',
-            '/wp-content/uploads/2025/04/2.222.jpg',
-            '/wp-content/uploads/2025/04/2.png',
-            '/wp-content/uploads/2025/04/3.3.jpg',
-            '/wp-content/uploads/2025/04/3.33.webp',
-            '/wp-content/uploads/2025/04/3.jpg',
-            '/wp-content/uploads/2025/04/1.1.webp',
-            '/wp-content/uploads/2025/04/1.11.webp',
-            '/wp-content/uploads/2025/04/1.jpeg',
+            'legacy-theme/assets/images/imported/wp-content/uploads/2025/04/2.2.jpg',
+            'legacy-theme/assets/images/imported/wp-content/uploads/2025/04/2.22.jpg',
+            'legacy-theme/assets/images/imported/wp-content/uploads/2025/04/2.222.jpg',
+            'legacy-theme/assets/images/imported/wp-content/uploads/2025/04/2.png',
+            'legacy-theme/assets/images/imported/wp-content/uploads/2025/04/3.3.jpg',
+            'legacy-theme/assets/images/imported/wp-content/uploads/2025/04/3.33.webp',
+            'legacy-theme/assets/images/imported/wp-content/uploads/2025/04/3.jpg',
+            'legacy-theme/assets/images/imported/wp-content/uploads/2025/04/1.1.webp',
+            'legacy-theme/assets/images/imported/wp-content/uploads/2025/04/1.11.webp',
+            'legacy-theme/assets/images/imported/wp-content/uploads/2025/04/1.jpeg',
         ];
     }
 }

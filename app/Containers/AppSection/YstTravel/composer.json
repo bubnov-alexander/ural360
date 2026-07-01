@@ -1,0 +1,6 @@
+{
+    "name": "ural360/yst-travel",
+    "description": "YST Travel imported bot data",
+    "type": "apiato-container",
+    "require": {}
+}

@@ -10,11 +10,11 @@ final class ContactSettingsSeeder_1 extends ParentSeeder
     public function run(UpsertContactSettingsTask $task): void
     {
         $task->run([
-            'site_name' => 'Сплавы по рекам и аренда транспорта',
+            'site_name' => 'Прокат катамаранов и транспортные услуги на Чусовой - д. Усть-Утка',
             'site_url' => 'https://ural360.ru/',
             'home_url' => 'https://ural360.ru/',
             'phone' => '+7 (900) 047-04-04',
-            'email' => 'mail@mailbox.ru',
+            'email' => 'ural360@mail.ru',
             'recipient_email' => 'dev@grampus-studio.ru',
             'address' => 'Свердловская область, д. Усть-Утка, ул. Тагильская, д. 37',
             'yandex_map_key' => 'a3719748-7b9d-45b6-86fc-6e72441c9684',

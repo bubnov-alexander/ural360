@@ -1,0 +1,32 @@
+#price-block {
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
+#price-block .file {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 150%;
+  color: #333333;
+}
+#price-block .file__icon {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #376AC5;
+  transition: background 0.3s ease-in;
+}
+#price-block .file:hover {
+  color: #F59D16;
+}
+#price-block .file:hover .file__icon {
+  background-color: #F59D16;
+}
+#price-block .btn {
+  margin-top: 60px;
+}/*# sourceMappingURL=block.css.map */

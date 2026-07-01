@@ -1,0 +1,6 @@
+{
+    "name": "ural360/callback",
+    "description": "Ural360 callback requests container",
+    "type": "apiato-container",
+    "require": {}
+}

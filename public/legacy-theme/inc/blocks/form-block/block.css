@@ -1,0 +1,168 @@
+#form-block {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+#form-block .wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+#form-block .wrap .image {
+  width: 41.6666666667%;
+  padding-right: 15px;
+  background-color: #F5F5F5;
+  background-position: 15px 0;
+}
+#form-block .wrap .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#form-block .wrap .form {
+  width: 58.3333333333%;
+  padding: 30px 15px;
+  display: flex;
+  align-items: center;
+  background-color: #F5F5F5;
+}
+#form-block .wrap .form__title {
+  margin-bottom: 15px;
+}
+#form-block .wrap .form__desc {
+  margin-bottom: 40px;
+  max-width: 410px;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 150%;
+  opacity: 0.8;
+}
+#form-block .wrap .form .wpcf7-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+#form-block .wrap .form .wpcf7-form .form-group {
+  width: 100%;
+  max-width: 570px;
+  display: flex;
+}
+#form-block .wrap .form .wpcf7-form .wpcf7-form-control-wrap {
+  display: block;
+}
+#form-block .wrap .form .wpcf7-form .wpcf7-form-control-wrap ~ .wpcf7-form-control-wrap {
+  margin-left: 30px;
+}
+#form-block .wrap .form .wpcf7-form .wpcf7-form-control {
+  width: 100%;
+}
+#form-block .wrap .form .wpcf7-form .wpcf7-form-control.wpcf7-textarea, #form-block .wrap .form .wpcf7-form .wpcf7-form-control.wpcf7-text {
+  margin-bottom: 30px;
+  resize: none;
+  border: 1px solid transparent;
+  background-color: #FFFFFF;
+  border-radius: 25px;
+  outline-color: #f59d16;
+  font-size: 16px;
+  line-height: 150%;
+  padding: 13px 20px;
+}
+#form-block .wrap .form .wpcf7-form .wpcf7-form-control.wpcf7-textarea:focus::placeholder, #form-block .wrap .form .wpcf7-form .wpcf7-form-control.wpcf7-text:focus::placeholder {
+  color: #f59d16;
+}
+#form-block .wrap .form .wpcf7-form .wpcf7-form-control.wpcf7-textarea::placeholder, #form-block .wrap .form .wpcf7-form .wpcf7-form-control.wpcf7-text::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: rgba(78, 59, 41, 0.75);
+}
+#form-block .wrap .form .wpcf7-form .wpcf7-form-control.wpcf7-textarea.wpcf7-not-valid, #form-block .wrap .form .wpcf7-form .wpcf7-form-control.wpcf7-text.wpcf7-not-valid {
+  border-color: #f70a0e;
+}
+#form-block .wrap .form .wpcf7-form .wpcf7-form-control.wpcf7-textarea.wpcf7-not-valid::placeholder, #form-block .wrap .form .wpcf7-form .wpcf7-form-control.wpcf7-text.wpcf7-not-valid::placeholder {
+  color: #f70a0e;
+}
+#form-block .wrap .form .wpcf7-form .wpcf7-form-control.wpcf7-textarea {
+  max-height: 150px;
+}
+#form-block .wrap .form .wpcf7-form .wpcf7-form-control.wpcf7-submit {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  color: white;
+}
+#form-block .wrap .form .wpcf7-form .policy {
+  display: inline-block;
+  margin-top: 15px;
+  margin-right: 40px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  color: rgba(78, 59, 41, 0.5);
+}
+#form-block .wrap .form .wpcf7-form .policy a {
+  border-bottom: 1px solid #547b53;
+  color: #547b53;
+  opacity: 1;
+  background: transparent;
+  transition: all 0.3s ease-in;
+  font-size: inherit;
+  line-height: inherit;
+  transition: opacity 0.3s ease-in;
+}
+#form-block .wrap .form .wpcf7-form .policy a:hover {
+  opacity: 0.6;
+}
+#form-block .wrap .form .wpcf7-form .btn {
+  flex-shrink: 0;
+  order: 2;
+  margin-top: 15px;
+}
+#form-block .wrap .form .wpcf7-form .btn:hover input {
+  color: #f59d16;
+}
+
+@media (max-width: 980px) {
+  #form-block .wrap .form .wpcf7-form .policy {
+    margin-right: 15px;
+  }
+  #form-block .wrap .form__title {
+    font-size: 40px;
+  }
+}
+@media (max-width: 870px) {
+  #form-block .wrap .image {
+    width: 60%;
+  }
+  #form-block .wrap .form {
+    width: 40%;
+  }
+  #form-block .wrap .form__desc {
+    margin-bottom: 30px;
+    font-size: 18px;
+  }
+  #form-block .wrap .form .wpcf7-form .form-group {
+    flex-wrap: wrap;
+  }
+  #form-block .wrap .form .wpcf7-form .wpcf7-form-control-wrap {
+    width: 100%;
+  }
+  #form-block .wrap .form .wpcf7-form .wpcf7-form-control-wrap ~ .wpcf7-form-control-wrap {
+    margin-left: 0;
+  }
+  #form-block .wrap .form .wpcf7-form .wpcf7-form-control {
+    width: 100%;
+  }
+  #form-block .wrap .form .wpcf7-form .wpcf7-form-control.wpcf7-textarea, #form-block .wrap .form .wpcf7-form .wpcf7-form-control.wpcf7-text {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 738px) {
+  #form-block .wrap .image {
+    width: 100%;
+    padding: 0;
+  }
+  #form-block .wrap .form {
+    width: 100%;
+  }
+}/*# sourceMappingURL=block.css.map */

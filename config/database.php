@@ -62,6 +62,25 @@ return [
             ]) : [],
         ],
 
+        'yst_travel' => [
+            'driver' => 'mysql',
+            'host' => env('YST_TRAVEL_DB_HOST', env('DB_HOST', '127.0.0.1')),
+            'port' => env('YST_TRAVEL_DB_PORT', env('DB_PORT', '3306')),
+            'database' => env('YST_TRAVEL_DB_DATABASE', 'yst_travel_db'),
+            'username' => env('YST_TRAVEL_DB_USERNAME', env('DB_USERNAME', 'root')),
+            'password' => env('YST_TRAVEL_DB_PASSWORD', env('DB_PASSWORD', '')),
+            'unix_socket' => env('YST_TRAVEL_DB_SOCKET', env('DB_SOCKET', '')),
+            'charset' => env('YST_TRAVEL_DB_CHARSET', 'utf8mb4'),
+            'collation' => env('YST_TRAVEL_DB_COLLATION', 'utf8mb4_unicode_ci'),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
         'mariadb' => [
             'driver' => 'mariadb',
             'url' => env('DB_URL'),
