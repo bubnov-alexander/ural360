@@ -1,0 +1,123 @@
+#contacts-block {
+  padding-bottom: 80px;
+}
+#contacts-block .page-title {
+  margin: 0;
+  padding-bottom: 40px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e2e2e2;
+}
+#contacts-block .contacts {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 0 -15px;
+}
+#contacts-block .contacts__wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 33.3333333333%;
+  padding: 0 15px;
+}
+#contacts-block .contacts__map {
+  flex: 0 0 66.6666666667%;
+  padding: 0 15px;
+}
+#contacts-block .contacts__map .map-holder {
+  height: 360px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+#contacts-block .item-wrap {
+  margin-bottom: 20px;
+}
+#contacts-block .item-wrap .title {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 143%;
+  color: #828282;
+}
+#contacts-block .item-wrap .title img {
+  margin-right: 10px;
+  width: 28px;
+  height: 28px;
+}
+#contacts-block .item-wrap .item {
+  padding-left: 38px;
+  line-height: 1.4;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  color: #333333;
+}
+#contacts-block .item-wrap .item:hover {
+  color: #547b53;
+}
+#contacts-block .item-wrap .item p {
+  margin: 0;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  color: #333333;
+}
+#contacts-block .email,
+#contacts-block .phone {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+#contacts-block .soc {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+}
+#contacts-block .soc__item {
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+#contacts-block .soc__item ~ .soc__item {
+  margin-left: 30px;
+}
+#contacts-block .soc__item svg {
+  max-height: 90%;
+  object-fit: contain;
+}
+#contacts-block .soc__item svg path {
+  transition: fill 0.3s ease-in;
+}
+#contacts-block .soc__item:hover path {
+  fill: #547b53;
+}
+#contacts-block.contacts-page {
+  padding-top: 0;
+}
+
+@media (max-width: 990px) {
+  #contacts-block .contacts__wrap {
+    flex: 0 0 40%;
+  }
+  #contacts-block .contacts__map {
+    flex: 0 0 60%;
+  }
+}
+@media (max-width: 740px) {
+  #contacts-block .contacts__wrap {
+    flex: 0 0 100%;
+  }
+  #contacts-block .contacts__map {
+    flex: 0 0 100%;
+  }
+  #contacts-block .soc {
+    margin: 0;
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 500px) {
+  #contacts-block .page-title {
+    padding-bottom: 20px;
+  }
+}/*# sourceMappingURL=block.css.map */

@@ -8,8 +8,6 @@ use Throwable;
 
 final class ServiceMediaSeeder_2 extends ParentSeeder
 {
-    private const BASE_URL = 'https://ural360.ru';
-
     public function run(): void
     {
         foreach ($this->images() as $title => $path) {
@@ -23,7 +21,8 @@ final class ServiceMediaSeeder_2 extends ParentSeeder
 
             try {
                 $service
-                    ->addMediaFromUrl(self::BASE_URL . $path)
+                    ->addMedia(public_path($path))
+                    ->preservingOriginal()
                     ->toMediaCollection(Service::MEDIA_COLLECTION_SERVICE_IMAGE);
             } catch (Throwable) {
                 continue;
@@ -37,10 +36,10 @@ final class ServiceMediaSeeder_2 extends ParentSeeder
     private function images(): array
     {
         return [
-            'Прокат катамаранов' => '/wp-content/uploads/2022/12/IMG_0090.png',
-            'Трансфер' => '/wp-content/uploads/2025/04/IMG_0111.png',
-            'Автостоянка' => '/wp-content/uploads/2025/04/IMG_0227.png',
-            'Прокат SUP-бордов' => '/wp-content/uploads/2025/04/IMG_0229.png',
+            'Прокат катамаранов' => 'legacy-theme/assets/images/imported/wp-content/uploads/2022/12/service-catamarans.png',
+            'Трансфер' => 'legacy-theme/assets/images/imported/wp-content/uploads/2025/04/service-transfer.png',
+            'Автостоянка' => 'legacy-theme/assets/images/imported/wp-content/uploads/2025/04/service-parking.png',
+            'Прокат SUP-бордов' => 'legacy-theme/assets/images/imported/wp-content/uploads/2025/04/service-supboards.png',
         ];
     }
 }

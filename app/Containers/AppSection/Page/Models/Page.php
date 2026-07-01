@@ -8,6 +8,7 @@ use App\Containers\AppSection\Seo\Enums\SeoFieldType;
 use App\Containers\AppSection\Seo\Models\Seo;
 use App\Containers\AppSection\Seo\Traits\HasSeoTrait;
 use App\Ship\Parents\Models\Model as ParentModel;
+use App\Ship\Services\MediaAltGenerator;
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -41,6 +42,17 @@ final class Page extends ParentModel implements HasMedia, SeoInterface
 
         static::saved(static function (Page $page): void {
             $page->syncGeneratedSeo();
+        });
+
+        Media::creating(static function (Media $media): void {
+            if (
+                ! $media->model instanceof Page
+                || $media->collection_name !== self::MEDIA_COLLECTION_HOME_GALLERY
+            ) {
+                return;
+            }
+
+            app(MediaAltGenerator::class)->applyOnCreating($media);
         });
     }
 

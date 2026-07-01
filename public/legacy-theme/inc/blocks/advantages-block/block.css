@@ -1,0 +1,114 @@
+#advantages-block {
+  position: relative;
+  z-index: 2;
+  margin-top: -65px;
+}
+@media (max-width: 800px) {
+  #advantages-block {
+    margin-top: 20px;
+  }
+}
+
+.advantages {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+}
+.advantages .item {
+  display: flex;
+  align-items: center;
+  padding: 25px 35px 25px 26px;
+  background: #FFFFFF;
+  border-radius: 15px;
+  border: 2px solid #032b02;
+}
+.advantages .item__icon {
+  flex-shrink: 0;
+  margin-right: 25px;
+  width: 60px;
+  height: 60px;
+}
+.advantages .item__icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.advantages .item__text {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 144%;
+  color: #333333;
+}
+
+@media (max-width: 1000px) {
+  .advantages .item {
+    padding: 20px 25px;
+  }
+  .advantages .item__icon {
+    margin-right: 15px;
+    width: 45px;
+    height: 45px;
+  }
+  .advantages .item__text {
+    font-size: 16px;
+  }
+}
+@media (max-width: 900px) {
+  .advantages {
+    grid-gap: 20px;
+  }
+}
+@media (max-width: 800px) {
+  .advantages .item {
+    flex-direction: column;
+  }
+  .advantages .item .item {
+    padding: 20px 25px;
+  }
+  .advantages .item .item__icon {
+    margin-right: 0;
+    margin-bottom: 10px;
+    width: 50px;
+    height: 50px;
+  }
+  .advantages .item .item__text {
+    text-align: center;
+    font-size: 18px;
+  }
+}
+@media (max-width: 700px) {
+  .advantages {
+    grid-gap: 10px;
+  }
+  .advantages .item {
+    padding: 15px 20px;
+  }
+  .advantages .item .item__icon {
+    width: 45px;
+    height: 45px;
+  }
+  .advantages .item .item__text {
+    font-size: 16px;
+  }
+}
+@media (max-width: 580px) {
+  .advantages {
+    grid-template-columns: 1fr;
+  }
+  .advantages .item {
+    flex-direction: row;
+  }
+  .advantages .item .item {
+    padding: 20px 25px;
+  }
+  .advantages .item .item__icon {
+    margin-right: 20px;
+    width: 50px;
+    height: 50px;
+  }
+  .advantages .item .item__text {
+    text-align: left;
+    font-size: 18px;
+  }
+}/*# sourceMappingURL=block.css.map */

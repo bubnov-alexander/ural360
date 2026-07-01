@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Seo\Models;
 
 use App\Ship\Parents\Models\Model as ParentModel;
+use App\Ship\Services\MediaAltGenerator;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -24,6 +25,20 @@ final class Seo extends ParentModel implements HasMedia
         'model_id',
         'model_type',
     ];
+
+    protected static function booted(): void
+    {
+        Media::creating(static function (Media $media): void {
+            if (
+                ! $media->model instanceof Seo
+                || $media->collection_name !== self::MEDIA_COLLECTION_SEO_IMAGE
+            ) {
+                return;
+            }
+
+            app(MediaAltGenerator::class)->applyOnCreating($media);
+        });
+    }
 
     public function registerMediaCollections(?Media $media = null): void
     {

@@ -6,7 +6,7 @@ use Spatie\LaravelSettings\Settings;
 
 final class ContactSettings extends Settings
 {
-    public string $site_name = 'Сплавы по рекам и аренда транспорта';
+    public string $site_name = 'Прокат катамаранов и транспортные услуги на Чусовой - д. Усть-Утка';
 
     public string $site_url = 'https://ural360.ru/';
 
@@ -14,7 +14,7 @@ final class ContactSettings extends Settings
 
     public string $phone = '+7 (900) 047-04-04';
 
-    public string $email = 'mail@mailbox.ru';
+    public string $email = 'ural360@mail.ru';
 
     public string $recipient_email = 'dev@grampus-studio.ru';
 

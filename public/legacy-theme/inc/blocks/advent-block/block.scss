@@ -1,0 +1,59 @@
+#advant-block {
+    margin-top: 40px;
+    .advant {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-gap: 10px;
+
+        .item {
+            &__count {
+                position: relative;
+                margin-bottom: 12px;
+                padding-left: 15px;
+                font-weight: 700;
+                font-size: 48px;
+                line-height: 121%;
+                color: #333333;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    z-index: -1;
+                    top: 0;
+                    left: 0;
+                    width: 62px;
+                    height: 62px;
+                    background-color: #F59D16;
+                    border-radius: 50%;
+                }
+            }
+            &__text {
+                font-weight: 700;
+                font-size: 20px;
+                line-height: 150%;
+                color: #333333;
+            }
+        }
+    }
+}
+#advant-block {
+    @media (max-width: 940px) {
+        .advant {
+            grid-template-columns: 1fr;
+        }
+    }
+    @media (max-width: 781px) {
+        .advant {
+            grid-template-columns: 1fr 1fr;
+
+            .item {
+                max-width: 300px;
+            }
+        }
+    }
+    @media (max-width: 480px) {
+        .advant {
+            grid-template-columns: 1fr;
+        }
+    }
+}

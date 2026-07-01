@@ -1,0 +1,928 @@
+/* Laravel public pages: keep WordPress theme geometry where backend markup differs. */
+
+.page-skeleton {
+  position: fixed;
+  z-index: 10000;
+  inset: 0;
+  overflow: hidden auto;
+  background: #eef4ee;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.skeleton-ready .page-skeleton {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.page-skeleton *,
+.page-skeleton *::before,
+.page-skeleton *::after {
+  box-sizing: border-box;
+}
+
+.page-skeleton__container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.page-skeleton__header {
+  position: relative;
+  z-index: 2;
+  padding: 22px 0;
+  background: #ffffff;
+}
+
+.page-skeleton__header .page-skeleton__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.page-skeleton__logo,
+.page-skeleton__nav span,
+.page-skeleton__line,
+.page-skeleton__button,
+.page-skeleton__advantage,
+.page-skeleton__cards > div {
+  position: relative;
+  overflow: hidden;
+  background: #dfe8df;
+}
+
+.page-skeleton__logo::after,
+.page-skeleton__nav span::after,
+.page-skeleton__line::after,
+.page-skeleton__button::after,
+.page-skeleton__advantage::after,
+.page-skeleton__cards > div::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+  animation: skeleton-shimmer 1.4s infinite;
+}
+
+.page-skeleton__logo {
+  width: 168px;
+  height: 62px;
+  border-radius: 8px;
+}
+
+.page-skeleton__nav {
+  display: flex;
+  gap: 26px;
+}
+
+.page-skeleton__nav span {
+  width: 95px;
+  height: 18px;
+  border-radius: 12px;
+}
+
+.page-skeleton__hero {
+  min-height: 520px;
+  padding: 135px 0 80px;
+  background: #6f876d;
+}
+
+.page-skeleton__content {
+  max-width: 570px;
+}
+
+.page-skeleton__line {
+  height: 18px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+}
+
+.page-skeleton__line--title {
+  width: 100%;
+  height: 58px;
+  margin-bottom: 24px;
+  border-radius: 8px;
+}
+
+.page-skeleton__line--short {
+  width: 68%;
+}
+
+.page-skeleton__line--heading {
+  width: 330px;
+  height: 44px;
+  margin-bottom: 36px;
+  background: #d7e2d7;
+}
+
+.page-skeleton__button {
+  width: 210px;
+  height: 52px;
+  margin-top: 34px;
+  border-radius: 30px;
+  background: #ffffff;
+}
+
+.page-skeleton__advantages {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: -54px;
+  margin-bottom: 72px;
+}
+
+.page-skeleton__advantage {
+  height: 106px;
+  border: 1px solid #032b02;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.page-skeleton__section {
+  padding-bottom: 70px;
+}
+
+.page-skeleton__cards {
+  display: grid;
+  gap: 25px;
+}
+
+.page-skeleton__cards--services {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.page-skeleton__cards--services > div {
+  height: 170px;
+  border-radius: 8px;
+  background: #cfdccf;
+}
+
+.page-skeleton__routes {
+  padding: 70px 0 85px;
+  background: #314430;
+}
+
+.page-skeleton__routes .page-skeleton__line--heading {
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.page-skeleton__cards--routes {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.page-skeleton__cards--routes > div {
+  min-height: 530px;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+#service-block .service .item {
+  min-height: 0;
+  aspect-ratio: 1024 / 572;
+  padding: 0;
+  background: transparent;
+}
+
+#service-block .service .item__wrap {
+  display: none;
+}
+
+#service-block .service .item__image {
+  position: absolute;
+  inset: 0;
+}
+
+#service-block .service .item__image img {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  object-fit: contain;
+  object-position: center;
+}
+
+#advantages-block .advantages .item__icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+#footer .theme-modal {
+  width: min(520px, calc(100vw - 32px));
+  padding: 34px;
+  border: 1px solid rgba(84, 123, 83, 0.18);
+  border-radius: 8px;
+  box-shadow: 0 22px 70px rgba(11, 30, 14, 0.26);
+}
+
+#footer .theme-modal .close-modal {
+  top: 14px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #f2f6f1;
+  font-size: 24px;
+  line-height: 1;
+}
+
+#footer .theme-modal .title {
+  margin-bottom: 12px;
+  padding-right: 38px;
+  font-size: 30px;
+  line-height: 1.18;
+}
+
+#footer .theme-modal .wpcf7-form {
+  gap: 12px;
+}
+
+#footer .theme-modal .wpcf7-form p {
+  margin: 0;
+}
+
+#footer .theme-modal .wpcf7-form .public-form__lead {
+  margin-bottom: 6px;
+  color: #5b5e61;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+#footer .theme-modal .wpcf7-form .wpcf7-form-control.wpcf7-textarea,
+#footer .theme-modal .wpcf7-form .wpcf7-form-control.wpcf7-text,
+#footer .theme-modal .wpcf7-form .wpcf7-form-control.wpcf7-tel {
+  min-height: 50px;
+  padding: 13px 16px;
+  border: 1px solid #cfd9ce;
+  border-radius: 8px;
+  background: #fbfdfb;
+  color: #253024;
+  font-size: 16px;
+  line-height: 1.4;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+#footer .theme-modal .wpcf7-form .wpcf7-form-control.wpcf7-textarea {
+  min-height: 116px;
+  max-height: 180px;
+}
+
+#footer .theme-modal .wpcf7-form .wpcf7-form-control.wpcf7-textarea::placeholder,
+#footer .theme-modal .wpcf7-form .wpcf7-form-control.wpcf7-text::placeholder,
+#footer .theme-modal .wpcf7-form .wpcf7-form-control.wpcf7-tel::placeholder {
+  color: #7b857a;
+}
+
+#footer .theme-modal .wpcf7-form .wpcf7-form-control.wpcf7-textarea:focus,
+#footer .theme-modal .wpcf7-form .wpcf7-form-control.wpcf7-text:focus,
+#footer .theme-modal .wpcf7-form .wpcf7-form-control.wpcf7-tel:focus {
+  border-color: #547b53;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(84, 123, 83, 0.14);
+  outline: none;
+}
+
+#footer .theme-modal .wpcf7-form .wpcf7-form-control.wpcf7-submit {
+  height: 52px;
+  border-radius: 999px;
+  background: #547b53;
+  font-weight: 700;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+#footer .theme-modal .wpcf7-form .wpcf7-form-control.wpcf7-submit:hover {
+  background: #3f683e;
+}
+
+#footer .theme-modal .wpcf7-form .wpcf7-form-control.wpcf7-submit:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+#footer .theme-modal .wpcf7-form .btn {
+  margin-top: 4px;
+  border-radius: 999px;
+  background: transparent;
+}
+
+#routes.products_block {
+  padding-top: 0;
+}
+
+#routes.products_block .produtc_cont {
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+#routes.products_block .products_container {
+  align-items: stretch;
+  overflow: visible;
+}
+
+#routes.products_block .product_item {
+  height: auto !important;
+  display: flex;
+  align-self: stretch;
+}
+
+@media (max-width: 600px) {
+  #footer .theme-modal {
+    padding: 28px 18px 22px;
+  }
+
+  #footer .theme-modal .title {
+    font-size: 25px;
+  }
+}
+
+#main #routes.products_block .product,
+#routes.products_block .product {
+  height: auto !important;
+  min-height: 620px;
+  display: flex;
+}
+
+#routes.products_block li:not(.product-category).product {
+  height: auto !important;
+  min-height: 620px;
+  width: 100%;
+  display: flex;
+}
+
+#routes.products_block li:not(.product-category).product a {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  width: 100%;
+  height: auto !important;
+  min-height: 620px;
+  padding: 18px;
+  padding-bottom: 24px;
+  border-radius: 8px;
+  overflow: visible;
+}
+
+#main #routes.products_block li:not(.product-category).product .product-image {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  margin-bottom: 36px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+#main #routes.products_block li:not(.product-category).product .product-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  object-fit: cover;
+}
+
+#routes.products_block .woocommerce-loop-product__title {
+  min-height: 60px;
+}
+
+#main #routes.products_block .products_container li:not(.product-category).product .product-wrap {
+  display: contents;
+}
+
+#routes.products_block .product_desc {
+  grid-row: 3;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+#routes.products_block .product_desc p {
+  margin-bottom: 14px;
+}
+
+#routes.products_block .product_desc ul {
+  padding-left: 0;
+}
+
+#main #routes.products_block .products_container li:not(.product-category).product .product-wrap .btn {
+  grid-row: 4;
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  min-height: 44px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+#gallery-block .gallery {
+  overflow: hidden;
+}
+
+#gallery-block .gallery .swiper-wrapper {
+  align-items: stretch;
+}
+
+#gallery-block .gallery .swiper-slide {
+  height: auto;
+}
+
+#service-archive {
+  padding-top: 90px;
+}
+
+#service-page {
+  padding-top: 90px;
+  padding-bottom: 80px;
+}
+
+#tour-page {
+  padding-top: 90px;
+  padding-bottom: 80px;
+}
+
+#about-page {
+  padding-top: 90px;
+  padding-bottom: 80px;
+}
+
+#privacy-policy-page {
+  padding-top: 90px;
+  padding-bottom: 80px;
+}
+
+#gallery-archive {
+  padding-top: 90px;
+}
+
+#question-archive {
+  padding-top: 90px;
+}
+
+#contacts-block.contacts-page {
+  padding-top: 90px;
+}
+
+#routes-archive {
+  padding-top: 90px;
+}
+
+#routes-archive .catalog__products {
+  margin: 0;
+  padding-bottom: 80px;
+}
+
+#routes-archive .catalog__holder {
+  width: 100%;
+  padding: 0;
+}
+
+#routes-archive .routes-archive__grid {
+  width: 100%;
+}
+
+#routes-archive li:not(.product-category).product,
+#routes-archive li:not(.product-category).product a {
+  min-height: 420px;
+}
+
+#routes-archive li:not(.product-category).product {
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+#routes-archive li:not(.product-category).product a {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  align-items: flex-end;
+  justify-content: flex-end;
+  background: #173018;
+}
+
+#routes-archive li:not(.product-category).product a::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(3, 43, 2, 0.1) 0%, rgba(3, 43, 2, 0.88) 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+#routes-archive li:not(.product-category).product .product-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+#routes-archive li:not(.product-category).product .product-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+#routes-archive li:not(.product-category).product .woocommerce-loop-product__title,
+#routes-archive li:not(.product-category).product .product-attrs,
+#routes-archive li:not(.product-category).product .product-wrap {
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+#routes-archive li:not(.product-category).product .woocommerce-loop-product__title {
+  width: 100%;
+  margin: 0;
+  padding: 28px 28px 0;
+  color: #ffffff;
+}
+
+#routes-archive li:not(.product-category).product .product-attrs {
+  padding: 12px 28px 0;
+  color: #ffffff;
+}
+
+#routes-archive li:not(.product-category).product .product-attrs .item__title,
+#routes-archive li:not(.product-category).product .product-attrs .item__value {
+  color: #ffffff;
+}
+
+#routes-archive li:not(.product-category).product .product-wrap {
+  width: 100%;
+  padding: 16px 28px 28px;
+  gap: 18px;
+}
+
+#routes-archive li:not(.product-category).product .product_desc {
+  color: #ffffff;
+}
+
+#routes-archive li:not(.product-category).product .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+#routes-archive li:not(.product-category).product a:hover::after,
+#routes-archive li:not(.product-category).product a:focus-visible::after {
+  opacity: 1;
+}
+
+#routes-archive li:not(.product-category).product a:hover .product-image img,
+#routes-archive li:not(.product-category).product a:focus-visible .product-image img {
+  transform: scale(1.04);
+}
+
+#routes-archive li:not(.product-category).product a:hover .woocommerce-loop-product__title,
+#routes-archive li:not(.product-category).product a:hover .product-attrs,
+#routes-archive li:not(.product-category).product a:hover .product-wrap,
+#routes-archive li:not(.product-category).product a:focus-visible .woocommerce-loop-product__title,
+#routes-archive li:not(.product-category).product a:focus-visible .product-attrs,
+#routes-archive li:not(.product-category).product a:focus-visible .product-wrap {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#service-page .service-detail__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2em;
+  align-items: start;
+}
+
+#service-page .service-detail__image {
+  margin: 0;
+}
+
+#service-page .service-detail__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+#service-page .service-detail__prices {
+  margin-top: 50px;
+}
+
+#service-page .service-detail__prices h2 {
+  text-align: center;
+}
+
+#service-page .wp-block-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#service-page .wp-block-table td {
+  padding: 14px 18px;
+  border: 1px solid #d9e1d9;
+}
+
+#service-page .wp-block-table td:last-child {
+  text-align: right;
+}
+
+#tour-page .product__gallery .woocommerce-product-gallery {
+  opacity: 1 !important;
+}
+
+#tour-page .product__gallery .image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #edf3ed;
+}
+
+#tour-page .product__gallery .image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#tour-page .tour-detail__attrs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+#tour-page .tour-detail__attr {
+  padding: 16px;
+  border: 1px solid #d9e1d9;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+#tour-page .tour-detail__attr span {
+  display: block;
+  margin-bottom: 6px;
+  color: #6f7d6f;
+  font-size: 14px;
+}
+
+#tour-page .tour-detail__attr strong {
+  color: #032b02;
+  font-weight: 700;
+}
+
+#tour-page .tour-detail__content {
+  margin-bottom: 28px;
+}
+
+#tour-page .tour-detail__content h2 {
+  margin-top: 26px;
+  margin-bottom: 14px;
+}
+
+#tour-page .tour-detail__content p,
+#tour-page .tour-detail__content li {
+  line-height: 1.6;
+}
+
+#tour-page .tour-detail__content ol,
+#tour-page .tour-detail__content ul {
+  padding-left: 22px;
+}
+
+#tour-page .product-wrap .btn {
+  display: inline-flex;
+  height: 50px;
+  min-width: 220px;
+  margin-bottom: 0;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-align: center;
+}
+
+#about-page .content-page__body,
+#privacy-policy-page .content-page__body {
+  max-width: 900px;
+}
+
+#about-page .content-page__body p,
+#privacy-policy-page .content-page__body p,
+#privacy-policy-page .content-page__body li {
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+#privacy-policy-page .content-page__body h2 {
+  margin-top: 34px;
+  margin-bottom: 16px;
+}
+
+#privacy-policy-page .content-page__body ul {
+  margin-bottom: 22px;
+}
+
+#contacts-block .contacts__map .map-holder script {
+  display: block;
+}
+
+#contacts-block .soc__item img,
+#footer .soc__item img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+#footer .soc {
+  margin-top: 18px;
+}
+
+#footer .soc__item {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+}
+
+#contacts-block .contacts__map .map-holder > ymaps,
+#contacts-block .contacts__map .map-holder iframe {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.contacts-page__map-empty {
+  display: flex;
+  height: 100%;
+  min-height: 360px;
+  align-items: center;
+  justify-content: center;
+  background: #edf3ed;
+  color: #333333;
+}
+
+#footer > .container,
+#footer .grampus > .container {
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: border-box;
+}
+
+#footer .grid {
+  grid-template-columns: 1fr 1fr 1fr 1.5fr;
+  justify-content: space-between;
+  align-items: start;
+  width: 100%;
+}
+
+#footer .logo-wrap {
+  max-width: none;
+  width: 100%;
+  align-items: flex-end;
+  justify-content: flex-start;
+  text-align: right;
+}
+
+#footer .logo-wrap .logo {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#footer .logo-wrap .logo img {
+  object-position: right center;
+}
+
+#footer .logo-wrap .logo_text {
+  max-width: 360px;
+}
+
+#footer .grampus__wrap {
+  width: 100%;
+}
+
+@media (max-width: 800px) {
+  .page-skeleton__nav {
+    display: none;
+  }
+
+  .page-skeleton__hero {
+    min-height: 460px;
+    padding-top: 105px;
+  }
+
+  .page-skeleton__advantages,
+  .page-skeleton__cards--services,
+  .page-skeleton__cards--routes {
+    grid-template-columns: 1fr;
+  }
+
+  .page-skeleton__cards--routes > div {
+    min-height: 460px;
+  }
+
+  #main #routes.products_block .product,
+  #routes.products_block .product,
+  #routes.products_block li:not(.product-category).product,
+  #routes.products_block li:not(.product-category).product a {
+    min-height: 560px;
+  }
+
+  #service-block .service .item {
+    min-height: 0;
+  }
+
+  #service-archive {
+    padding-top: 40px;
+  }
+
+  #service-page {
+    padding-top: 40px;
+  }
+
+  #tour-page {
+    padding-top: 40px;
+  }
+
+  #about-page {
+    padding-top: 40px;
+  }
+
+  #privacy-policy-page {
+    padding-top: 40px;
+  }
+
+  #gallery-archive {
+    padding-top: 40px;
+  }
+
+  #question-archive {
+    padding-top: 40px;
+  }
+
+  #contacts-block.contacts-page {
+    padding-top: 40px;
+  }
+
+  #routes-archive {
+    padding-top: 40px;
+  }
+
+  #service-page .service-detail__grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  #tour-page .tour-detail__attrs {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 752px) {
+  #footer .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #footer .logo-wrap {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  #footer .logo-wrap .logo {
+    justify-content: flex-start;
+  }
+
+  #footer .logo-wrap .logo img {
+    object-position: left center;
+  }
+}
+
+@media (max-width: 460px) {
+  #footer .grid {
+    grid-template-columns: 1fr;
+  }
+}

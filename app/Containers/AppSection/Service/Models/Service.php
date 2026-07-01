@@ -7,6 +7,7 @@ use App\Containers\AppSection\Seo\Enums\SeoFieldType;
 use App\Containers\AppSection\Seo\Models\Seo;
 use App\Containers\AppSection\Seo\Traits\HasSeoTrait;
 use App\Ship\Parents\Models\Model as ParentModel;
+use App\Ship\Services\MediaAltGenerator;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
@@ -39,6 +40,17 @@ final class Service extends ParentModel implements HasMedia, SeoInterface
 
         static::saved(static function (Service $service): void {
             $service->syncGeneratedSeo();
+        });
+
+        Media::creating(static function (Media $media): void {
+            if (
+                ! $media->model instanceof Service
+                || $media->collection_name !== self::MEDIA_COLLECTION_SERVICE_IMAGE
+            ) {
+                return;
+            }
+
+            app(MediaAltGenerator::class)->applyOnCreating($media);
         });
     }
 

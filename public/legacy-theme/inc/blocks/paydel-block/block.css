@@ -1,0 +1,57 @@
+.paydel-block {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.paydel-block__wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(400px, 50%), 1fr));
+  border-radius: 5px;
+  gap: 5px;
+}
+.paydel-block__item {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background: #F1F1F3;
+  border-radius: 5px;
+}
+.paydel-block__item .item__img-holder {
+  width: 70px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #547b53;
+  flex-shrink: 0;
+  border-radius: 5px;
+}
+.paydel-block__item .item__img-holder img {
+  margin-top: 10px;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+.paydel-block__item .item__info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.paydel-block__item .item__title {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.paydel-block__item .item__desc {
+  font-size: 16px;
+}
+@media (max-width: 480px) {
+  .paydel-block__item {
+    flex-direction: column;
+  }
+  .paydel-block__item .item__img-holder {
+    width: 100%;
+    height: auto;
+  }
+  .paydel-block__item .item__img-holder img {
+    margin-bottom: 10px;
+  }
+}/*# sourceMappingURL=block.css.map */
